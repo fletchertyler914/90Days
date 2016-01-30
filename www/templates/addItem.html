@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Add Items of The Day</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeAddItem()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="addItem()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Smoothie of The Day: </span>
+          <input type="text" ng-model="itemData.smoothie">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Food of The Day: </span>
+          <input type="text" ng-model="itemData.food">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-controller="itemCtrl" ng-click="addItem()">Upload Items</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

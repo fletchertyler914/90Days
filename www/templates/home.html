@@ -1,0 +1,23 @@
+<ion-view view-title="90Days">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon-medium ion-plus" ng-controller="itemCtrl" ng-click="openAddItem()"></button>
+  </ion-nav-buttons>
+  <ion-content>
+      <ion-list>
+        <ion-item ng-repeat="item in items">
+          {{item.title}}
+            <button ng-controller="homeCtrl" class="button button-full button-assertive" ng-click="open{{item.link}}Url()">
+              Open {{item.link}} Url
+            </button>
+          </ion-item>
+      </ion-list>
+<!--
+      <button ng-controller="homeCtrl" class="button button-full button-assertive" ng-click="openFoodUrl()">
+          Open Food Url
+      </button>
+       <button ng-controller="homeCtrl" class="button button-full button-assertive" ng-click="openSmoothieUrl()">
+          Open Smoothie Url
+      </button>
+-->
+    </ion-content>
+</ion-view>
