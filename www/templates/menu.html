@@ -18,16 +18,20 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
+        <ion-item ng-hide="SignedIn" menu-close ng-click="openLogin()">
           Login
         </ion-item>
-        <ion-item menu-close ng-click="signup()">
+<!--
+        <ion-item ng-hide="SignedIn" menu-close ng-click="openSignup()">
           Sign Up
+        </ion-item>
+-->
+        <ion-item ng-show="SignedIn" menu-close ng-click="signout()">
+          Sign Out
         </ion-item>
         <ion-item menu-close href="#/app/home">
           Home
         </ion-item>
-
       </ion-list>
     </ion-content>
   </ion-side-menu>

@@ -1,24 +1,98 @@
 angular.module('app.controllers', ['ngAnimate'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope) {
+    
+    // Create a callback which logs the current auth state
+    function authDataCallback(authData) {
+      if (authData) {
+        console.log("User " + authData.uid + " is logged in with " + authData.provider);
+        // Assign a scope variable to the authinticated user
+        $rootScope.authDataUid = authData.uid;
+        $rootScope.SignedIn = true;
 
+      } else {
+        console.log("User is logged out");
+        $rootScope.SignedIn = false;
+      }
+    }
+
+    // Register the callback to be fired every time auth state changes
+    var ref = new Firebase("https://90daysapp.firebaseio.com");
+    ref.onAuth(authDataCallback);
+
+    
   // Form data for the login modal
   $scope.itemData = {};
+  $scope.loginData = {};
+  $scope.signupData = {};
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
+  }).then(function(loginModal) {
+    $scope.loginModal = loginModal;
   });
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
-    $scope.modal.hide();
+    $scope.loginModal.hide();
   };
   // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
+  $scope.openLogin = function() {
+    $scope.loginModal.show();
   };
+    
+  // Perform the login action when the user submits the login form
+  $scope.doLogin = function() {
+    var ref = new Firebase("https://90daysapp.firebaseio.com");
+    ref.authWithPassword({
+      email    : $scope.loginData.username,
+      password : $scope.loginData.password
+    }, function(error, authData) {
+      if (authData) {
+        console.log("Successfully logged in with uid:", authData.uid);
+          $scope.closeLogin();
+      } else {
+        console.log("Error Logging In: ", error);
+        alert("Error: ", error);
+      }
+    });
+  };
+    
+// Create the signup modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/signup.html', {
+    scope: $scope
+  }).then(function(signupModal) {
+    $scope.signupModal = signupModal;
+  });
+  // Triggered in the signup modal to close it
+  $scope.closeSignup = function() {
+    $scope.signupModal.hide();
+  };
+  // Open the signup modal
+  $scope.openSignup = function() {
+    $scope.signupModal.show();
+  };
+    
+  // Perform the signup action when the user submits the signup form
+  $scope.doSignup = function() {
+    var ref = new Firebase("https://90daysapp.firebaseio.com");
+    ref.createUser({
+      email    : $scope.signupData.username,
+      password : $scope.signupData.password
+    }, function(error, userData) {
+      if (userData) {
+        console.log("Successfully created user account with uid:", userData.uid);
+          $scope.closeSignup();
+      } else {
+        console.log("Error Signing Up: ", error);
+        alert("Error: ", error);
+      }
+    });
+  };
+    
+    $scope.signout = function(){
+        ref.unauth();
+    };
 
   // Create the addItem modal that we will use later
   $ionicModal.fromTemplateUrl('templates/addItem.html', {
@@ -35,16 +109,9 @@ angular.module('app.controllers', ['ngAnimate'])
     $scope.addItemModal.show();
   };
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.itemData);
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
-})
+}) // End App Ctrl
+
+// Possibly needed?
 .factory("ItemsArray", function($firebaseArray) {
   var itemsRef = new Firebase("https://90DaysApp.firebaseio.com/items");
   return $firebaseArray(itemsRef);
@@ -60,6 +127,7 @@ angular.module('app.controllers', ['ngAnimate'])
     // Set Data value's to a variable for inAppBrowser to Understand  
     var foodUrl = getData.Food;
     var smoothieUrl = getData.Smoothie;
+    var workoutUrl = getData.Workout;
       
       $scope.openFoodUrl = function()
         {
@@ -71,6 +139,12 @@ angular.module('app.controllers', ['ngAnimate'])
         {
          // Open in app browser
          window.open(smoothieUrl,'_blank');
+        };
+      
+      $scope.openWorkoutUrl = function()
+        {
+         // Open in app browser
+         window.open(workoutUrl,'_blank');
         };
   });
 
@@ -91,6 +165,9 @@ angular.module('app.controllers', ['ngAnimate'])
       }
       if ($scope.itemData.food){
         itemsRef.update({Food: $scope.itemData.food})
+      }
+      if ($scope.itemData.workout){
+        itemsRef.update({Workout: $scope.itemData.workout})
       }
       $scope.closeAddItem();
     };

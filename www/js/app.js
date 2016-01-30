@@ -22,34 +22,41 @@ angular.module('app', ['ionic', 'app.controllers','firebase'])
   });
 })
 
+.factory("Auth", function($firebaseAuth) {
+  var usersRef = new Firebase("https//90daysapp.firebaseio.com/users");
+  return $firebaseAuth(usersRef);
+})
 
 .config(function($stateProvider, $urlRouterProvider) {
+    
+    var ref = new Firebase("https://90daysapp.firebaseio.com");
+    var authData = ref.getAuth();
+    
+    
+//   if (authData) {
 
-  $stateProvider
+      //console.log("User " + authData.uid + " is logged in with " + authData.provider);
+    
+        $stateProvider
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+            .state('app', {
+            url: '/app',
+            abstract: true,
+            templateUrl: 'templates/menu.html',
+            controller: 'AppCtrl', 
+          })
 
-    .state('app.addItem', {
-    url: '/addItem',
-    abstract: true,
-    templateUrl: 'templates/addItem.html',
-  })
+          .state('app.home', {
+              url: '/home',
+              views: {
+                'menuContent': {
+                  templateUrl: 'templates/home.html',
+                  controller: 'homeCtrl'
+                }
+              },
+            });
+        
+          // if none of the above states are matched, use this as the fallback
+          $urlRouterProvider.otherwise('/app/home');
 
-  .state('app.home', {
-      url: '/home',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/home.html',
-          controller: 'homeCtrl'
-        }
-      },
     });
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
-});
