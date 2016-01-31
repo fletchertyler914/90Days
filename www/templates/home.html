@@ -1,15 +1,20 @@
-<ion-view view-title="90Days">
+<ion-view view-title="90 Day Challange">
+    <ion-nav-bar class="bar bar-dark">
   <ion-nav-buttons side="right">
     <button ng-show="SignedIn" class="button button-icon-medium ion-plus" ng-controller="itemCtrl" ng-click="openAddItem()"></button>
   </ion-nav-buttons>
+        </ion-nav-bar>
   <ion-content>
       <ion-list>
-        <ion-item ng-repeat="item in items">
-          {{item.title}}
-            <button ng-controller="homeCtrl" class="button button-full button-assertive" ng-click="open{{item.link}}Url()">
-              Open {{item.link}} Url
-            </button>
-          </ion-item>
+        <ion-item class="item item-dark" ng-repeat="item in items" style="margin-top: 15px;">
+          <h2 class="itemTitle" >{{item.title}}</h2>
+            <p>
+                <button ng-controller="homeCtrl" class="button button-full button-balanced" ng-click="open{{item.link}}Url()">
+                    Checkout The {{item.link}} of The Day
+                </button>
+            </p>
+          </ion-item> 
       </ion-list>
     </ion-content>
 </ion-view>
+

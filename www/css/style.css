@@ -2,3 +2,16 @@
 .mainHeader{
 text-align: center;
 }
+
+.blackBG{
+    color: #fff;
+    background-color: black;
+}
+
+.scroll-content{
+  background-color: #000;
+}
+
+.itemTitle{
+    color: #fff;
+}

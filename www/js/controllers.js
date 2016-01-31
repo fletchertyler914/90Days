@@ -149,9 +149,9 @@ angular.module('app.controllers', ['ngAnimate'])
   });
 
   $scope.items = [
-    { title: 'Smoothie of The Day', id: 1, link: "Smoothie" },
-    { title: 'Food of The Day', id: 2, link: "Food" },
-    { title: 'Workout of The Day', id: 3, link: "Workout" },
+    { title: 'Smoothie of The Day: ', id: 1, link: "Smoothie" },
+    { title: 'Food of The Day: ', id: 2, link: "Food" },
+    { title: 'Workout of The Day: ', id: 3, link: "Workout" },
     { title: 'Join Me!', id: 4, link: "JoinMe" },
   ];
 })
