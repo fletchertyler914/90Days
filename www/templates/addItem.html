@@ -1,5 +1,5 @@
 <ion-modal-view>
-  <ion-header-bar>
+  <ion-header-bar class="bar bar-dark">
     <h1 class="title">Add Items of The Day</h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="closeAddItem()">Close</button>
@@ -21,7 +21,7 @@
           <input type="text" ng-model="itemData.workout">
         </label>
         <label class="item">
-          <button class="button button-block button-positive" type="submit" ng-controller="itemCtrl" ng-click="addItem()">Upload Items</button>
+          <button class="button button-block button-balanced" type="submit" ng-controller="itemCtrl" ng-click="addItem()">Upload Items</button>
         </label>
       </div>
     </form>
