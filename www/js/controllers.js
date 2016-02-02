@@ -5,13 +5,13 @@ angular.module('app.controllers', ['ngAnimate'])
     // Create a callback which logs the current auth state
     function authDataCallback(authData) {
       if (authData) {
-        console.log("User " + authData.uid + " is logged in with " + authData.provider);
+        //console.log("User " + authData.uid + " is logged in with " + authData.provider);
         // Assign a scope variable to the authinticated user
         $rootScope.authDataUid = authData.uid;
         $rootScope.SignedIn = true;
 
       } else {
-        console.log("User is logged out");
+        //console.log("User is logged out");
         $rootScope.SignedIn = false;
       }
     }
@@ -81,10 +81,10 @@ angular.module('app.controllers', ['ngAnimate'])
       password : $scope.signupData.password
     }, function(error, userData) {
       if (userData) {
-        console.log("Successfully created user account with uid:", userData.uid);
+        //console.log("Successfully created user account with uid:", userData.uid);
           $scope.closeSignup();
       } else {
-        console.log("Error Signing Up: ", error);
+        //console.log("Error Signing Up: ", error);
         alert("Error: ", error);
       }
     });
@@ -118,6 +118,11 @@ angular.module('app.controllers', ['ngAnimate'])
 })
 
 .controller('homeCtrl', function($scope, ItemsArray, $firebaseObject, $firebaseArray) {
+    if(window.navigator.standalone == true) {
+  // My app is installed and therefore fullscreen
+        //alert("test");
+}
+    
   // Get a reference to our Items
   var ref = new Firebase("https://90DaysApp.firebaseio.com/items");
   // Retrieve new posts as they are added to our database
@@ -132,7 +137,7 @@ angular.module('app.controllers', ['ngAnimate'])
       $scope.openFoodUrl = function()
         {
          // Open in app browser
-         window.open(foodUrl,'_blank');
+         window.open(foodUrl,'_self');
         };
 
         $scope.openSmoothieUrl = function()
@@ -144,15 +149,15 @@ angular.module('app.controllers', ['ngAnimate'])
       $scope.openWorkoutUrl = function()
         {
          // Open in app browser
-         window.open(workoutUrl,'_blank');
+         window.open(workoutUrl,'_system');
         };
   });
 
   $scope.items = [
-    { title: 'Smoothie of The Day: ', id: 1, link: "Smoothie" },
-    { title: 'Food of The Day: ', id: 2, link: "Food" },
-    { title: 'Workout of The Day: ', id: 3, link: "Workout" },
-    { title: 'Join Me!', id: 4, link: "JoinMe" },
+    { title: 'Smoothie of The Day: ', id: 1, link: "Smoothie", image: "../img/blender.png"},
+    { title: 'Food of The Day: ', id: 2, link: "Food", image: "../img/food.png" },
+    { title: 'Workout of The Day: ', id: 3, link: "Workout", image: "../img/barbell.png"},
+//    { title: 'Join Me!', id: 4, link: "JoinMe" },
   ];
 })
 

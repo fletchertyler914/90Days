@@ -17,8 +17,9 @@ angular.module('app', ['ionic', 'app.controllers','firebase'])
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
+      StatusBar.hide();
     }
+      
   });
 })
 
@@ -54,7 +55,17 @@ angular.module('app', ['ionic', 'app.controllers','firebase'])
                   controller: 'homeCtrl'
                 }
               },
-            });
+            })
+        
+            .state('app.iframe', {
+                  url: '/iframe',
+                  views: {
+                    'menuContent': {
+                      templateUrl: 'templates/iframe.html',
+                      controller: 'homeCtrl'
+                    }
+                  },
+                });
         
           // if none of the above states are matched, use this as the fallback
           $urlRouterProvider.otherwise('/app/home');
