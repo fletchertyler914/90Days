@@ -6,15 +6,20 @@
         </ion-nav-bar>
   <ion-content>
       <ion-list>
-        <ion-item class="item item-dark" ng-repeat="item in items" style="margin-top: 15px;">
-          <h2 class="itemTitle" >{{item.title}}</h2>
-            <p>
-                <button ng-controller="homeCtrl" class="button button-full button-balanced" ng-click="open{{item.link}}Url()">
-                    Checkout The {{item.link}} of The Day
-                </button>
-            </p>
+        <ion-item class="item item-dark itemCard" ng-repeat="item in items" style="margin-top: 15px;">
+            <div class="iconContainer">
+                <img style="height: 100%; width:100%;" ng-src="{{item.image}}">
+            </div>
+            <div class="itemContainer">
+              <h2 class="itemTitle" >{{item.title}}</h2>
+                <p>
+                    <button style="width: 90%;" ng-controller="homeCtrl" class="button button-full button-balanced" ng-click="open{{item.link}}Url()">
+                        Checkout The {{item.link}} of The Day
+                    </button>
+                </p>
+            </div>
           </ion-item> 
-      </ion-list>
+      </ion-list> 
     </ion-content>
 </ion-view>
 
