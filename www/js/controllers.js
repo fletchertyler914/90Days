@@ -24,7 +24,7 @@ angular.module('app.controllers', ['ngAnimate'])
   // Form data for the login modal
   $scope.itemData = {};
   $scope.loginData = {};
-  //$scope.signupData = {};
+  $scope.signupData = {};
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -137,7 +137,7 @@ angular.module('app.controllers', ['ngAnimate'])
       $scope.openFoodUrl = function()
         {
          // Open in app browser
-         window.open(foodUrl,'_blank');
+         window.open(foodUrl,'_self');
         };
 
         $scope.openSmoothieUrl = function()
@@ -149,14 +149,14 @@ angular.module('app.controllers', ['ngAnimate'])
       $scope.openWorkoutUrl = function()
         {
          // Open in app browser
-         window.open(workoutUrl,'_blank');
+         window.open(workoutUrl,'_system');
         };
   });
 
   $scope.items = [
-    { title: 'Smoothie of The Day: ', id: 1, link: "Smoothie", image: "https://dl.dropboxusercontent.com/u/20609233/90days/www/img/blender.png"},
-    { title: 'Food of The Day: ', id: 2, link: "Food", image: "https://dl.dropboxusercontent.com/u/20609233/90days/www/img/food.png" },
-    { title: 'Workout of The Day: ', id: 3, link: "Workout", image: "https://dl.dropboxusercontent.com/u/20609233/90days/www/img/barbell.png"},
+    { title: 'Smoothie of The Day: ', id: 1, link: "Smoothie", image: "../img/blender.png"},
+    { title: 'Food of The Day: ', id: 2, link: "Food", image: "../img/food.png" },
+    { title: 'Workout of The Day: ', id: 3, link: "Workout", image: "../img/barbell.png"},
 //    { title: 'Join Me!', id: 4, link: "JoinMe" },
   ];
 })
