@@ -1,17 +1,25 @@
-<ion-view view-title="90Days">
+<ion-view view-title="90 Day Challange">
+    <ion-nav-bar class="bar bar-dark">
   <ion-nav-buttons side="right">
-    <button class="button button-icon-medium ion-plus" ng-controller="itemCtrl" ng-click="openAddItem()"></button>
+    <button ng-show="SignedIn" class="button button-icon-medium ion-plus" ng-controller="itemCtrl" ng-click="openAddItem()"></button>
   </ion-nav-buttons>
+        </ion-nav-bar>
   <ion-content>
       <ion-list>
-        <ion-item ng-repeat="item in items">
-          {{item.title}}
-      </ion-list>
-      <button ng-controller="inAppCtrl" class="button button-full button-assertive" ng-click="openInAppBrowser()">
-          Open In App Browser
-      </button>
-       <button ng-controller="inAppCtrl" class="button button-full button-assertive" ng-click="openCordovaWebView()">
-          Open In Cordova Webview
-      </button>
+        <ion-item class="item item-dark itemCard" ng-repeat="item in items" style="margin-top: 15px;">
+            <div class="iconContainer">
+                <img style="height: 100%; width:100%;" ng-src="{{item.image}}">
+            </div>
+            <div class="itemContainer">
+              <h2 class="itemTitle" >{{item.title}}</h2>
+                <p>
+                    <button style="width: 90%;" ng-controller="homeCtrl" class="button button-full button-balanced" ng-click="open{{item.link}}Url()">
+                        Checkout The {{item.link}} of The Day
+                    </button>
+                </p>
+            </div>
+          </ion-item> 
+      </ion-list> 
     </ion-content>
 </ion-view>
+

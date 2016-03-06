@@ -1,0 +1,9 @@
+{
+  "firebase": "90daysapp",
+  "public": "www",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

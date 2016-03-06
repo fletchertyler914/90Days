@@ -1,0 +1,6 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Users/Tylerfletcher/Websites/90Days/www/lib/ionic/js/ionic.min.js",
+        "/Users/Tylerfletcher/Websites/90Days/platforms/ios/www/cordova-js-src/exec.js"
+    ]
+}

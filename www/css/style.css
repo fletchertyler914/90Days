@@ -2,3 +2,35 @@
 .mainHeader{
 text-align: center;
 }
+
+.blackBG{
+    color: #fff;
+    background-color: black;
+}
+
+.scroll-content{
+  background-color: #000;
+}
+
+.itemTitle{
+    color: #fff;
+}
+
+.itemCard{
+    margin-left: 10px;
+    width: 100%;
+}
+
+.iconContainer{
+    float: left;
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.itemContainer{
+    display: inline-block;
+    width: 90%;
+}

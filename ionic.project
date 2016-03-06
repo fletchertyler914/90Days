@@ -1,4 +1,12 @@
 {
   "name": "90Days",
-  "app_id": "f4bde829"
+  "app_id": "f4bde829",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }
