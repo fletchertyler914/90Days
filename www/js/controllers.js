@@ -6,7 +6,7 @@ angular.module('app.controllers', ['ngAnimate'])
   $scope.itemData = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('www/templates/login.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
@@ -21,7 +21,7 @@ angular.module('app.controllers', ['ngAnimate'])
   };
 
   // Create the addItem modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/addItem.html', {
+  $ionicModal.fromTemplateUrl('www/templates/addItem.html', {
     scope: $scope
   }).then(function(addItemModal) {
     $scope.addItemModal = addItemModal;

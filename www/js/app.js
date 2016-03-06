@@ -30,21 +30,21 @@ angular.module('app', ['ionic', 'app.controllers','firebase'])
     .state('app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/menu.html',
+    templateUrl: 'www/templates/menu.html',
     controller: 'AppCtrl'
   })
 
     .state('app.addItem', {
     url: '/addItem',
     abstract: true,
-    templateUrl: 'templates/addItem.html',
+    templateUrl: 'www/templates/addItem.html',
   })
 
   .state('app.home', {
       url: '/home',
       views: {
         'menuContent': {
-          templateUrl: 'templates/home.html',
+          templateUrl: 'www/templates/home.html',
           controller: 'homeCtrl'
         }
       },
