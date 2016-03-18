@@ -1,7 +1,7 @@
 angular.module('app.controllers', ['ngAnimate'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope) {
-    
+    .controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope) {
+
     // Create a callback which logs the current auth state
     function authDataCallback(authData) {
       if (authData) {
@@ -20,7 +20,7 @@ angular.module('app.controllers', ['ngAnimate'])
     var ref = new Firebase("https://90daysapp.firebaseio.com");
     ref.onAuth(authDataCallback);
 
-    
+
   // Form data for the login modal
   $scope.itemData = {};
   $scope.loginData = {};
@@ -40,7 +40,7 @@ angular.module('app.controllers', ['ngAnimate'])
   $scope.openLogin = function() {
     $scope.loginModal.show();
   };
-    
+
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     var ref = new Firebase("https://90daysapp.firebaseio.com");
@@ -57,7 +57,7 @@ angular.module('app.controllers', ['ngAnimate'])
       }
     });
   };
-    
+
 // Create the signup modal that we will use later
   $ionicModal.fromTemplateUrl('www/templates/signup.html', {
     scope: $scope
@@ -72,7 +72,7 @@ angular.module('app.controllers', ['ngAnimate'])
   $scope.openSignup = function() {
     $scope.signupModal.show();
   };
-    
+
   // Perform the signup action when the user submits the signup form
   $scope.doSignup = function() {
     var ref = new Firebase("https://90daysapp.firebaseio.com");
@@ -89,7 +89,7 @@ angular.module('app.controllers', ['ngAnimate'])
       }
     });
   };
-    
+
     $scope.signout = function(){
         ref.unauth();
     };
@@ -122,18 +122,18 @@ angular.module('app.controllers', ['ngAnimate'])
   // My app is installed and therefore fullscreen
         //alert("test");
 }
-    
+
   // Get a reference to our Items
   var ref = new Firebase("https://90DaysApp.firebaseio.com/items");
   // Retrieve new posts as they are added to our database
   ref.on("value", function(getObject, prevChildKey) {
     var getData = getObject.val();
-     
-    // Set Data value's to a variable for inAppBrowser to Understand  
+
+    // Set Data value's to a variable for inAppBrowser to Understand
     var foodUrl = getData.Food;
     var smoothieUrl = getData.Smoothie;
     var workoutUrl = getData.Workout;
-      
+
       $scope.openFoodUrl = function()
         {
          // Open in app browser
@@ -145,7 +145,7 @@ angular.module('app.controllers', ['ngAnimate'])
          // Open in app browser
          window.open(smoothieUrl,'_blank');
         };
-      
+
       $scope.openWorkoutUrl = function()
         {
          // Open in app browser

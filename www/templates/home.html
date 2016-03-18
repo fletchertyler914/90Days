@@ -13,13 +13,13 @@
             <div class="itemContainer">
               <h2 class="itemTitle" >{{item.title}}</h2>
                 <p>
-                    <button style="width: 90%;" ng-controller="homeCtrl" class="button button-full button-balanced" ng-click="open{{item.link}}Url()">
+                    <button ng-controller="homeCtrl" id="button" class="button button-balanced" ng-click="open{{item.link}}Url()">
                         Checkout The {{item.link}} of The Day
                     </button>
                 </p>
             </div>
-          </ion-item> 
-      </ion-list> 
+          </ion-item>
+      </ion-list>
     </ion-content>
 </ion-view>
 

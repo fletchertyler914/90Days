@@ -32,5 +32,26 @@ text-align: center;
 
 .itemContainer{
     display: inline-block;
-    width: 90%;
+    width: 95%;
+}
+
+#button{
+    width: 95%;
+}
+
+@media (max-width: 1020px) {
+    .itemContainer{
+        display: inline-block;
+        width: 85%;
+    }
+    #button{
+        width: 95%;
+    }
+}
+
+@media (max-width: 400px) {
+
+    #button{
+        font-size: 13px;
+    }
 }
