@@ -12,7 +12,7 @@ angular.module('app.controllers', ['ngAnimate'])
 
       } 
       else {
-        //console.log("User is logged out");
+        console.log("User is not logged in");
         $rootScope.SignedIn = false;
       }
     }
