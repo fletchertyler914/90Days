@@ -5,7 +5,7 @@ angular.module('app.controllers', ['ngAnimate'])
     // Create a callback which logs the current auth state
     function authDataCallback(authData) {
       if (authData) {
-        console.log("User '" + authData.uid + "' is logged in with ID: " + authData.provider);
+        console.log("User '" + authData.uid + "' was successfully logged in");
         // Assign a scope variable to the authinticated user
         $rootScope.authDataUid = authData.uid;
         $rootScope.SignedIn = true;
@@ -54,7 +54,7 @@ angular.module('app.controllers', ['ngAnimate'])
           $scope.closeLogin();
       } else {
         console.log("Error Logging In: ", error);
-        alert("Error: ", error);
+        alert("Incorrect Username/Password!");
       }
     });
   };
