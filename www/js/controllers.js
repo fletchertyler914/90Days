@@ -53,7 +53,7 @@ angular.module('app.controllers', ['ngAnimate'])
         console.log("Successfully logged in with uid:", authData.uid);
           $scope.closeLogin();
       } else {
-        console.log("Error Logging In: ", error);
+        console.log("Incorrect Username/Password!");
         alert("Incorrect Username/Password!");
       }
     });
