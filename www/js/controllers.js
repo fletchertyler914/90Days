@@ -5,12 +5,13 @@ angular.module('app.controllers', ['ngAnimate'])
     // Create a callback which logs the current auth state
     function authDataCallback(authData) {
       if (authData) {
-        //console.log("User " + authData.uid + " is logged in with " + authData.provider);
+        console.log("User '" + authData.uid + "' is logged in with ID: " + authData.provider);
         // Assign a scope variable to the authinticated user
         $rootScope.authDataUid = authData.uid;
         $rootScope.SignedIn = true;
 
-      } else {
+      } 
+      else {
         //console.log("User is logged out");
         $rootScope.SignedIn = false;
       }
@@ -74,24 +75,25 @@ angular.module('app.controllers', ['ngAnimate'])
   };
 
   // Perform the signup action when the user submits the signup form
-  $scope.doSignup = function() {
-    var ref = new Firebase("https://90daysapp.firebaseio.com");
-    ref.createUser({
-      email    : $scope.signupData.username,
-      password : $scope.signupData.password
-    }, function(error, userData) {
-      if (userData) {
-        //console.log("Successfully created user account with uid:", userData.uid);
-          $scope.closeSignup();
-      } else {
-        //console.log("Error Signing Up: ", error);
-        alert("Error: ", error);
-      }
-    });
-  };
+  //$scope.doSignup = function() {
+  //  var ref = new Firebase("https://90daysapp.firebaseio.com");
+  //  ref.createUser({
+  //    email    : $scope.signupData.username,
+  //    password : $scope.signupData.password
+  //  }, function(error, userData) {
+  //    if (userData) {
+  //      //console.log("Successfully created user account with uid:", userData.uid);
+  //        $scope.closeSignup();
+  //    } else {
+  //      //console.log("Error Signing Up: ", error);
+  //      alert("Error: ", error);
+  //    }
+  //  });
+  //};
 
     $scope.signout = function(){
         ref.unauth();
+        console.log("Successfully Signed Out!");
     };
 
   // Create the addItem modal that we will use later
@@ -111,7 +113,7 @@ angular.module('app.controllers', ['ngAnimate'])
 
 }) // End App Ctrl
 
-// Possibly needed?
+// FireBase Items Factory
 .factory("ItemsArray", function($firebaseArray) {
   var itemsRef = new Firebase("https://90DaysApp.firebaseio.com/items");
   return $firebaseArray(itemsRef);
@@ -134,20 +136,17 @@ angular.module('app.controllers', ['ngAnimate'])
     var smoothieUrl = getData.Smoothie;
     var workoutUrl = getData.Workout;
 
-      $scope.openFoodUrl = function()
-        {
+      $scope.openFoodUrl = function(){
          // Open in app browser
          window.open(foodUrl,'_blank');
         };
 
-        $scope.openSmoothieUrl = function()
-        {
+        $scope.openSmoothieUrl = function(){
          // Open in app browser
          window.open(smoothieUrl,'_blank');
         };
 
-      $scope.openWorkoutUrl = function()
-        {
+      $scope.openWorkoutUrl = function(){
          // Open in app browser
          window.open(workoutUrl,'_blank');
         };
